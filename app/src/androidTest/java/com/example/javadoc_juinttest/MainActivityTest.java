@@ -46,7 +46,7 @@ public class MainActivityTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("123456789"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("mmmmm"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.button), withText("Check password"),
@@ -59,26 +59,119 @@ public class MainActivityTest {
         materialButton.perform(click());
 
         ViewInteraction textView = onView(
+                allOf(withId(R.id.textView), withText("Try again , the password length should be more than 8 character "),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        textView.check(matches(withText("Try again , the password length should be more than 8 character ")));
+
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.editText), withText("mmmmm"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText2.perform(click());
+
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.editText), withText("mmmmm"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("mmmmm2222222"));
+
+        ViewInteraction appCompatEditText4 = onView(
+                allOf(withId(R.id.editText), withText("mmmmm2222222"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText4.perform(closeSoftKeyboard());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.button), withText("Check password"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
+        ViewInteraction textView2 = onView(
                 allOf(withId(R.id.textView), withText("Try again , the password must contain an upper case"),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        textView.check(matches(withText("Try again , the password must contain an upper case")));
+        textView2.check(matches(withText("Try again , the password must contain an upper case")));
+
+        ViewInteraction appCompatEditText5 = onView(
+                allOf(withId(R.id.editText), withText("mmmmm2222222"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText5.perform(click());
+
+        ViewInteraction appCompatEditText6 = onView(
+                allOf(withId(R.id.editText), withText("mmmmm2222222"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText6.perform(replaceText("mmmmm2222222MBb"));
+
+        ViewInteraction appCompatEditText7 = onView(
+                allOf(withId(R.id.editText), withText("mmmmm2222222MBb"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText7.perform(closeSoftKeyboard());
+
+        ViewInteraction materialButton3 = onView(
+                allOf(withId(R.id.button), withText("Check password"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton3.perform(click());
+
+        ViewInteraction textView3 = onView(
+                allOf(withId(R.id.textView), withText("That is okay"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        textView3.check(matches(withText("That is okay")));
     }
-@Test
+
+    @Test
     public void testFindMissingUpperCase()
     {
-    //find the view
-    ViewInteraction appCompatEditText = onView (withId(R.id.editText) );
-    //type in password123#$*
-    appCompatEditText.perform(replaceText( "password123#$*")) ;
-    //find the button
-    ViewInteraction materialButton = onView( withId(R.id.button) );
-    //click the button
-    materialButton.perform(click());
-    //find the text view
-    ViewInteraction textView = onView (withId(R.id.textView) );
-    //check the text
-    textView. check(matches(withText("Try again , the password must contain an upper case"))) ;
+        //find the view
+        ViewInteraction appCompatEditText = onView (withId(R.id.editText) );
+        //type in password123#$*
+        appCompatEditText.perform(replaceText( "password123#$*")) ;
+        //find the button
+        ViewInteraction materialButton = onView( withId(R.id.button) );
+        //click the button
+        materialButton.perform(click());
+        //find the text view
+        ViewInteraction textView = onView (withId(R.id.textView) );
+        //check the text
+        textView. check(matches(withText("Try again , the password must contain an upper case"))) ;
     }
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
